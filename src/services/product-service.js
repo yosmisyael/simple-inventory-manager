@@ -49,8 +49,7 @@ const save = async (data) => {
 
 const update = async (id, data) => {
     try {
-        console.log(id)
-        const { name, price, description } = await validate(updateProduct, data,  { context: id })
+        const { name, price, description } = await validate(updateProduct, data)
         const sql = 'UPDATE `products` SET `name` = ?, `price` = ?, `description` = ? WHERE `id` = ?'
         const values = [name, price, description, id];
         const [rows] = await db.execute(sql, values)

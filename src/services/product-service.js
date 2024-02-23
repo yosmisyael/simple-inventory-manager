@@ -11,7 +11,7 @@ const getAllProduct = async (page) => {
         const [rows] = await db.execute(sql, [`${size}`, `${offset}`])
         return rows
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 
@@ -21,7 +21,7 @@ const countProduct = async () => {
         const [rows] = await db.execute(sql)
         return rows.length
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 
@@ -32,7 +32,7 @@ const findById = async (id) => {
         const [rows] = await db.execute(sql, values)
         return rows
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 
@@ -44,7 +44,7 @@ const save = async (data) => {
         const [rows] = await db.execute(sql, values)
         return rows
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 
@@ -73,7 +73,7 @@ const remove = async (id) => {
         const [rows] = await db.execute(sql, values)
         return rows
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 

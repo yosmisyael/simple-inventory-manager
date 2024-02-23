@@ -1,5 +1,6 @@
 const db = require('../utils/db')
 const validate = require('../validation/validation')
+const validationException = require('../error/validation-error')
 const { storeProduct, updateProduct } = require('../validation/product-validation')
 
 const getAllProduct = async (page) => {
@@ -50,12 +51,18 @@ const save = async (data) => {
 const update = async (id, data) => {
     try {
         const { name, price, description } = await validate(updateProduct, data)
+
+        const exist = await findById(id)
+        if (exist.length > 0 && exist[0].id !== id) {
+            throw new Error('The name is already taken.')
+        }
+
         const sql = 'UPDATE `products` SET `name` = ?, `price` = ?, `description` = ? WHERE `id` = ?'
         const values = [name, price, description, id];
         const [rows] = await db.execute(sql, values)
         return rows
     } catch (err) {
-        throw err
+        throw new validationException(400, err.message)
     }
 }
 

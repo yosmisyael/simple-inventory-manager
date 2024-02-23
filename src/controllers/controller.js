@@ -74,7 +74,7 @@ const update = async (req, res) => {
             layout: 'layouts/main',
             title: 'Edit Product Information',
             error: err.message,
-            product,
+            product: product[0],
         })
     }
 

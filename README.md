@@ -40,17 +40,18 @@ CREATE TABLE products (
 
 ## Installation and Setup
 ### Environment Variable
-| KEY         | REQUIRED | DESCRIPTION          |
-|:------------|:--------:|:---------------------|
-| DB_HOST     |   true   | Host name            |
-| DB_PORT     |   true   | Port of the database |
-| DB_USERNAME |   true   | Username of database |
-| DB_PASSWORD |   true   | Password of database |
-| DB_NAME     |   true   | Database name        |
-
+| KEY         | REQUIRED | DESCRIPTION             |
+|:------------|:--------:|:------------------------|
+| DB_HOST     |   true   | Host name               |
+| DB_PORT     |   true   | Port of the database    |
+| DB_USERNAME |   true   | Username of database    |
+| DB_PASSWORD |   true   | Password of database    |
+| DB_NAME     |   true   | Database name           | 
+| NODE_ENV    |   true   | Environment information |
 
 To run the application, use following commands:
 ```
 npm install 
 npm run prod
 ```
+For production, use `NODE_ENV=production`
